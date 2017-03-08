@@ -5,7 +5,13 @@ A customisable AlertDialog for Android.
 
 ## Add Library
 ```
-compile project(path: ':fancydialog')
+repositories {
+        jcenter()
+    }
+       
+
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.1'
+
 ```
 ## Code Sample
 ```
