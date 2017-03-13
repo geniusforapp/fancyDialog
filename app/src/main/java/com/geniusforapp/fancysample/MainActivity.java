@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
                             public void OnClick(View view, Dialog dialog) {
                                 Toast.makeText(MainActivity.this, "Updating", Toast.LENGTH_SHORT).show();
                             }
-                        })
-                       /* .setAutoHide(true)*/
+                        }).setAlertFont("Roboto-Bold.ttf")
                         .build();
                 alert.show();
             }

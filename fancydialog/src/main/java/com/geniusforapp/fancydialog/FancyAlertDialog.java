@@ -2,6 +2,7 @@ package com.geniusforapp.fancydialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -127,10 +128,7 @@ public class FancyAlertDialog extends DialogFragment {
 
             if (builder.getImageRecourse() != 0) {
                 Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getImageRecourse(), getActivity().getTheme());
-
-    /*            AnimatedVectorDrawableCompat animatedVector = AnimatedVectorDrawableCompat.create(getActivity(), builder.getImageRecourse());*/
                 image.setImageDrawable(imageRes);
-            /*    animatedVector.start();*/
             } else if (builder.getImageDrawable() != null) {
                 image.setImageDrawable(builder.getImageDrawable());
             } else {
@@ -151,6 +149,33 @@ public class FancyAlertDialog extends DialogFragment {
                             dismiss();
                     }
                 }, time);
+            }
+
+            if (builder.getTitlefont() != null) {
+                title.setTypeface(builder.getTitlefont());
+            }
+
+            if (builder.getSubTitleFont() != null) {
+                subTitle.setTypeface(builder.getSubTitleFont());
+            }
+
+            if (builder.getBodyFont() != null) {
+                body.setTypeface(builder.getBodyFont());
+            }
+
+            if (builder.getPositiveButtonFont() != null) {
+                positive.setTypeface(builder.getPositiveButtonFont());
+            }
+            if (builder.getNegativeButtonFont() != null) {
+                negative.setTypeface(builder.getNegativeButtonFont());
+            }
+
+            if (builder.getAlertFont() != null) {
+                title.setTypeface(builder.getAlertFont());
+                subTitle.setTypeface(builder.getAlertFont());
+                body.setTypeface(builder.getAlertFont());
+                positive.setTypeface(builder.getAlertFont());
+                negative.setTypeface(builder.getAlertFont());
             }
 
 
@@ -204,8 +229,68 @@ public class FancyAlertDialog extends DialogFragment {
         private int imageRecourse;
         private Drawable imageDrawable;
 
+        private Typeface titleFont;
+        private Typeface subTitleFont;
+        private Typeface bodyFont;
+        private Typeface positiveButtonFont;
+        private Typeface negativeButtonFont;
+
+        private Typeface alertFont;
 
         private Activity activity;
+
+
+        public Typeface getAlertFont() {
+            return alertFont;
+        }
+
+        public Builder setAlertFont(String alertFont) {
+            this.alertFont = Typeface.createFromAsset(activity.getAssets(), alertFont);
+            return this;
+        }
+
+        public Typeface getPositiveButtonFont() {
+            return positiveButtonFont;
+        }
+
+        public Builder setPositiveButtonFont(String positiveButtonFont) {
+            this.positiveButtonFont = Typeface.createFromAsset(activity.getAssets(), positiveButtonFont);
+            return this;
+        }
+
+        public Typeface getNegativeButtonFont() {
+            return negativeButtonFont;
+        }
+
+        public void setNegativeButtonFont(String negativeButtonFont) {
+            this.negativeButtonFont = Typeface.createFromAsset(activity.getAssets(), negativeButtonFont);
+        }
+
+        public Typeface getTitlefont() {
+            return titleFont;
+        }
+
+
+        public Builder setTitlefont(String titleFontPath) {
+            this.titleFont = Typeface.createFromAsset(activity.getAssets(), titleFontPath);
+            return this;
+        }
+
+        public Typeface getSubTitleFont() {
+            return subTitleFont;
+        }
+
+        public void setSubTitleFont(String subTitleFontPath) {
+            this.subTitleFont = Typeface.createFromAsset(activity.getAssets(), subTitleFontPath);
+        }
+
+        public Typeface getBodyFont() {
+            return bodyFont;
+        }
+
+        public void setBodyFont(String bodyFontPath) {
+            this.bodyFont = Typeface.createFromAsset(activity.getAssets(), bodyFontPath);
+        }
 
 
         public int getTimeToHide() {

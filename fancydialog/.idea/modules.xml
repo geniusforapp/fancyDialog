@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../FancySample.iml" filepath="$PROJECT_DIR$/../FancySample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fancydialog.iml" filepath="$PROJECT_DIR$/fancydialog.iml" />
     </modules>
   </component>
