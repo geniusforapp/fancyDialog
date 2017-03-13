@@ -10,7 +10,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.1'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.2'
 
 ```
 ## Code Sample
