@@ -10,7 +10,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.2'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.3'
 
 ```
 ## Code Sample
@@ -43,6 +43,7 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
                 
 ```
 
+## Code Sample for custom font
 ```
 /* To change the the title font and body and content 
  you can use this methods */
