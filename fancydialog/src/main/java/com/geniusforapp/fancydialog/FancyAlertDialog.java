@@ -15,11 +15,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.Serializable;
@@ -41,7 +43,7 @@ public class FancyAlertDialog extends DialogFragment {
     private AppCompatImageView image;
     private TextView title, subTitle, body;
     private Button positive, negative;
-
+    private LinearLayout buttonsPanel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -178,6 +180,26 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setTypeface(builder.getAlertFont());
             }
 
+            if (builder.getButtonsGravity() != null) {
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                switch (builder.getButtonsGravity()) {
+                    case LEFT:
+                        params.gravity = Gravity.LEFT;
+                        break;
+                    case RIGHT:
+                        params.gravity = Gravity.RIGHT;
+                        break;
+                    case CENTER:
+                        params.gravity = Gravity.CENTER;
+                        break;
+                }
+                params.bottomMargin = 40;
+                params.topMargin = 100;
+                params.leftMargin = 40;
+                params.rightMargin = 40;
+                buttonsPanel.setLayoutParams(params);
+            }
+
 
         }
 
@@ -193,6 +215,7 @@ public class FancyAlertDialog extends DialogFragment {
         body = (TextView) view.findViewById(R.id.body);
         positive = (Button) view.findViewById(R.id.position);
         negative = (Button) view.findViewById(R.id.negative);
+        buttonsPanel = (LinearLayout) view.findViewById(R.id.buttons_panel);
     }
 
     private Dialog show(Activity activity, Builder builder) {
@@ -239,6 +262,16 @@ public class FancyAlertDialog extends DialogFragment {
 
         private Activity activity;
 
+        private PanelGravity buttonsGravity;
+
+        public PanelGravity getButtonsGravity() {
+            return buttonsGravity;
+        }
+
+        public Builder setButtonsGravity(PanelGravity buttonsGravity) {
+            this.buttonsGravity = buttonsGravity;
+            return this;
+        }
 
         public Typeface getAlertFont() {
             return alertFont;
@@ -510,6 +543,12 @@ public class FancyAlertDialog extends DialogFragment {
 
     public interface OnNegativeClicked {
         void OnClick(View view, Dialog dialog);
+    }
+
+    public enum PanelGravity {
+        LEFT,
+        RIGHT,
+        CENTER
     }
 
 

@@ -10,7 +10,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.3'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.4'
 
 ```
 ## Code Sample
@@ -54,6 +54,11 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
  builder.setSubTitleFont("fonts/lato.ttf");
  
  
+```
+
+## Code sample for change button panel gravity
+```
+builder.setButtonsGravity(PanelGravity.CENTER)
 ```
 
 ### Pull requests are welcome!

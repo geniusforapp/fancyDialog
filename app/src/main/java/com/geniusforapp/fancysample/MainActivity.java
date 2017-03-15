@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.geniusforapp.fancydialog.FancyAlertDialog.PanelGravity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,16 +31,9 @@ public class MainActivity extends AppCompatActivity {
                         .setTextTitle("UPLOAD")
                         .setTextSubTitle("128GB/500GB")
                         .setBody("New DATA has ben added to the device do you want to sync it with the service")
-                        .setNegativeColor(R.color.colorNegative)
-                        .setNegativeButtonText("Later")
-                        .setOnNegativeClicked(new FancyAlertDialog.OnNegativeClicked() {
-                            @Override
-                            public void OnClick(View view, Dialog dialog) {
-                                dialog.dismiss();
-                            }
-                        })
                         .setPositiveButtonText("Continue")
                         .setPositiveColor(R.color.colorPositive)
+                        .setButtonsGravity(PanelGravity.CENTER)
                         .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                             @Override
                             public void OnClick(View view, Dialog dialog) {
