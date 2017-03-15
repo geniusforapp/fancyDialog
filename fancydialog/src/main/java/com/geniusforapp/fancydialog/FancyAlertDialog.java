@@ -81,13 +81,35 @@ public class FancyAlertDialog extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         if (builder != null) {
-            title.setText(builder.getTextTitle());
+            if (builder.getTextTitle() != null)
+            {
+                title.setText(builder.getTextTitle());
+            }
+            else
+            {
+                title.setVisibility(View.GONE);
+            }
             if (builder.getTitleColor() != 0) {
                 title.setTextColor(ContextCompat.getColor(getActivity(), builder.getTitleColor()));
             }
-            subTitle.setText(builder.getTextSubTitle());
+            if (builder.getTextSubTitle() != null)
+            {
+                subTitle.setText(builder.getTextSubTitle());
+            }
+            else
+            {
+                subTitle.setVisibility(View.GONE);
+            }
             if (builder.getSubtitleColor() != 0) {
                 subTitle.setTextColor(ContextCompat.getColor(getActivity(), builder.getSubtitleColor()));
+            }
+            if (builder.getBody() != null)
+            {
+                body.setText(builder.getBody());
+            }
+            else
+            {
+                body.setVisibility(View.GONE);
             }
             body.setText(builder.getBody());
             if (builder.getBodyColor() != 0) {
@@ -193,17 +215,9 @@ public class FancyAlertDialog extends DialogFragment {
                         params.gravity = Gravity.CENTER;
                         break;
                 }
-                params.bottomMargin = 40;
-                params.topMargin = 100;
-                params.leftMargin = 40;
-                params.rightMargin = 40;
                 buttonsPanel.setLayoutParams(params);
             }
-
-
         }
-
-
     }
 
     private void initViews(View view) {
