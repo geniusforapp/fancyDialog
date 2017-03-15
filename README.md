@@ -1,6 +1,6 @@
 # FancyDialog
 A customisable AlertDialog for Android.
-<img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png">
+<img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png" width="320"/>
 
 
 ## Add Library
