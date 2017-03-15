@@ -151,8 +151,8 @@ public class FancyAlertDialog extends DialogFragment {
                 }, time);
             }
 
-            if (builder.getTitlefont() != null) {
-                title.setTypeface(builder.getTitlefont());
+            if (builder.getTitleFont() != null) {
+                title.setTypeface(builder.getTitleFont());
             }
 
             if (builder.getSubTitleFont() != null) {
@@ -262,16 +262,17 @@ public class FancyAlertDialog extends DialogFragment {
             return negativeButtonFont;
         }
 
-        public void setNegativeButtonFont(String negativeButtonFont) {
+        public Builder setNegativeButtonFont(String negativeButtonFont) {
             this.negativeButtonFont = Typeface.createFromAsset(activity.getAssets(), negativeButtonFont);
+            return this;
         }
 
-        public Typeface getTitlefont() {
+        public Typeface getTitleFont() {
             return titleFont;
         }
 
 
-        public Builder setTitlefont(String titleFontPath) {
+        public Builder setTitleFont(String titleFontPath) {
             this.titleFont = Typeface.createFromAsset(activity.getAssets(), titleFontPath);
             return this;
         }
@@ -280,16 +281,18 @@ public class FancyAlertDialog extends DialogFragment {
             return subTitleFont;
         }
 
-        public void setSubTitleFont(String subTitleFontPath) {
+        public Builder setSubTitleFont(String subTitleFontPath) {
             this.subTitleFont = Typeface.createFromAsset(activity.getAssets(), subTitleFontPath);
+            return this;
         }
 
         public Typeface getBodyFont() {
             return bodyFont;
         }
 
-        public void setBodyFont(String bodyFontPath) {
+        public Builder setBodyFont(String bodyFontPath) {
             this.bodyFont = Typeface.createFromAsset(activity.getAssets(), bodyFontPath);
+            return this;
         }
 
 
@@ -315,8 +318,9 @@ public class FancyAlertDialog extends DialogFragment {
             return activity;
         }
 
-        public void setActivity(Activity activity) {
+        public Builder setActivity(Activity activity) {
             this.activity = activity;
+            return this;
         }
 
         public Builder(Activity context) {
