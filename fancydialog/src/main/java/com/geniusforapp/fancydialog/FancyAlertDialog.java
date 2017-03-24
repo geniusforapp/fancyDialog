@@ -81,34 +81,25 @@ public class FancyAlertDialog extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
         if (builder != null) {
-            if (builder.getTextTitle() != null)
-            {
+            if (builder.getTextTitle() != null) {
                 title.setText(builder.getTextTitle());
-            }
-            else
-            {
+            } else {
                 title.setVisibility(View.GONE);
             }
             if (builder.getTitleColor() != 0) {
                 title.setTextColor(ContextCompat.getColor(getActivity(), builder.getTitleColor()));
             }
-            if (builder.getTextSubTitle() != null)
-            {
+            if (builder.getTextSubTitle() != null) {
                 subTitle.setText(builder.getTextSubTitle());
-            }
-            else
-            {
+            } else {
                 subTitle.setVisibility(View.GONE);
             }
             if (builder.getSubtitleColor() != 0) {
                 subTitle.setTextColor(ContextCompat.getColor(getActivity(), builder.getSubtitleColor()));
             }
-            if (builder.getBody() != null)
-            {
+            if (builder.getBody() != null) {
                 body.setText(builder.getBody());
-            }
-            else
-            {
+            } else {
                 body.setVisibility(View.GONE);
             }
             body.setText(builder.getBody());

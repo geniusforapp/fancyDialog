@@ -1,7 +1,13 @@
 # FancyDialog
 A customisable AlertDialog for Android.
+
 <img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png" width="1024" hight="500"/>
 
+
+# Whats new
+ * fix visibility for text view 
+ * downgrade the min sdk to 15 
+ * upgrade the support library
 
 ## Add Library
 ```
@@ -10,7 +16,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.4'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.5'
 
 ```
 ## Code Sample
