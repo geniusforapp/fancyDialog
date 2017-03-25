@@ -34,7 +34,7 @@ publish {
     userOrg = 'geniusapplications'
     groupId = 'com.geniusforapp.fancydialog'
     artifactId = 'FancyDialog'
-    publishVersion = '0.0.5'
+    publishVersion = '0.0.6'
     desc = 'A customisable AlertDialog for Android.'
     website = 'https://github.com/geniusforapp/fancyDialog'
 }

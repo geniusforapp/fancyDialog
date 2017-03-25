@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,16 +49,30 @@ public class FancyAlertDialog extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
-        }
+        if (isAdded() && getActivity() != null)
+            try {
+                if (savedInstanceState != null) {
+                    if (builder != null)
+                        builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
+                }
+            } catch (Exception e) {
+                Log.d(TAG, e.toString());
+            }
+
 
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable(Builder.class.getSimpleName(), builder);
+        try {
+            if (isAdded() && getActivity() != null)
+                if (builder != null)
+                    outState.putSerializable(Builder.class.getSimpleName(), builder);
+        } catch (Exception e) {
+            Log.d(TAG, e.toString());
+        }
+
     }
 
 
@@ -206,7 +221,8 @@ public class FancyAlertDialog extends DialogFragment {
                         params.gravity = Gravity.CENTER;
                         break;
                 }
-                buttonsPanel.setLayoutParams(params);
+                if (buttonsPanel != null)
+                    buttonsPanel.setLayoutParams(params);
             }
         }
     }
@@ -556,5 +572,9 @@ public class FancyAlertDialog extends DialogFragment {
         CENTER
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        this.builder = null;
+    }
 }
