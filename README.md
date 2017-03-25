@@ -68,8 +68,8 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 builder.setButtonsGravity(PanelGravity.CENTER)
 ```
 
-## Donation
-donation will help the developer to program more library
+## Tips
+tips will help the developer to program more library
 
 <p><h3><a href="https://www.paypal.me/AhmadNajar/5">Coffee</a></h3></p>
 <p><h3><a href="https://www.paypal.me/AhmadNajar/10">Donut</a></h3></p>
