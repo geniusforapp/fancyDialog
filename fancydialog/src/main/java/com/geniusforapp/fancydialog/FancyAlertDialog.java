@@ -576,5 +576,6 @@ public class FancyAlertDialog extends DialogFragment {
     public void onPause() {
         super.onPause();
         this.builder = null;
+        dismiss();
     }
 }

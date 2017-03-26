@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
-                        .setImageRecourse(R.drawable.ic_cloud_computing)
+                        .setImageDrawable(getResources().getDrawable(R.drawable.ic_cloud_computing))
                         .setTextTitle("UPLOAD")
                         .setTextSubTitle("128GB/500GB")
                         .setBody("New DATA has ben added to the device do you want to sync it with the service")

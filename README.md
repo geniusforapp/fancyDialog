@@ -5,6 +5,7 @@ A customisable AlertDialog for Android.
 
 
 # Whats new
+ * Optimization
  * fix crash bug on home button pressed and back button
  * fix visibility for text view 
  * downgrade the min sdk to 15 
@@ -17,7 +18,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.6'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.7'
 
 ```
 ## Code Sample
