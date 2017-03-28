@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.geniusforapp.fancydialog.FancyAlertDialog;
-import com.geniusforapp.fancydialog.FancyAlertDialog.PanelGravity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                         .setBody("New DATA has ben added to the device do you want to sync it with the service")
                         .setPositiveButtonText("Continue")
                         .setPositiveColor(R.color.colorPositive)
-                        .setButtonsGravity(PanelGravity.CENTER)
                         .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                             @Override
                             public void OnClick(View view, Dialog dialog) {
