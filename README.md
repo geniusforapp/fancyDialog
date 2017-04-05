@@ -1,10 +1,13 @@
 # FancyDialog
+<a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a>
+
 A customisable AlertDialog for Android.
 
 <img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png" width="1024" hight="500"/>
 
 
 # Whats new
+ * Optimization
  * fix crash bug on home button pressed and back button
  * fix visibility for text view 
  * downgrade the min sdk to 15 
@@ -17,7 +20,7 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.6'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.0.8'
 
 ```
 ## Code Sample
@@ -67,6 +70,14 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 ```
 builder.setButtonsGravity(PanelGravity.CENTER)
 ```
+
+## Tips
+tips will help the developer to program more library
+
+<p><h3><a href="https://www.paypal.me/AhmadNajar/5">Coffee</a></h3></p>
+<p><h3><a href="https://www.paypal.me/AhmadNajar/10">Donut</a></h3></p>
+<p><h3><a href="https://www.paypal.me/AhmadNajar/10">Lunch</a></h3></p>
+
 
 ### Pull requests are welcome!
 

@@ -2,6 +2,7 @@ package com.geniusforapp.fancydialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -48,16 +49,20 @@ public class FancyAlertDialog extends DialogFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        this.setCancelable(true);
+        setRetainInstance(true);
         super.onCreate(savedInstanceState);
-        if (isAdded() && getActivity() != null)
+
+        if (savedInstanceState != null) {
             try {
-                if (savedInstanceState != null) {
+                if (isAdded() && getActivity() != null)
                     if (builder != null)
                         builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
-                }
             } catch (Exception e) {
                 Log.d(TAG, e.toString());
             }
+
+        }
 
 
     }
@@ -72,6 +77,7 @@ public class FancyAlertDialog extends DialogFragment {
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
+
 
     }
 
@@ -241,7 +247,8 @@ public class FancyAlertDialog extends DialogFragment {
 
     private Dialog show(Activity activity, Builder builder) {
         this.builder = builder;
-        show(((AppCompatActivity) activity).getSupportFragmentManager(), TAG);
+        if (!isAdded())
+            show(((AppCompatActivity) activity).getSupportFragmentManager(), TAG);
         return getDialog();
     }
 
@@ -281,7 +288,7 @@ public class FancyAlertDialog extends DialogFragment {
 
         private Typeface alertFont;
 
-        private Activity activity;
+        private Context context;
 
         private PanelGravity buttonsGravity;
 
@@ -299,7 +306,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setAlertFont(String alertFont) {
-            this.alertFont = Typeface.createFromAsset(activity.getAssets(), alertFont);
+            this.alertFont = Typeface.createFromAsset(context.getAssets(), alertFont);
             return this;
         }
 
@@ -308,7 +315,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setPositiveButtonFont(String positiveButtonFont) {
-            this.positiveButtonFont = Typeface.createFromAsset(activity.getAssets(), positiveButtonFont);
+            this.positiveButtonFont = Typeface.createFromAsset(context.getAssets(), positiveButtonFont);
             return this;
         }
 
@@ -317,7 +324,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setNegativeButtonFont(String negativeButtonFont) {
-            this.negativeButtonFont = Typeface.createFromAsset(activity.getAssets(), negativeButtonFont);
+            this.negativeButtonFont = Typeface.createFromAsset(context.getAssets(), negativeButtonFont);
             return this;
         }
 
@@ -327,7 +334,7 @@ public class FancyAlertDialog extends DialogFragment {
 
 
         public Builder setTitleFont(String titleFontPath) {
-            this.titleFont = Typeface.createFromAsset(activity.getAssets(), titleFontPath);
+            this.titleFont = Typeface.createFromAsset(context.getAssets(), titleFontPath);
             return this;
         }
 
@@ -336,7 +343,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setSubTitleFont(String subTitleFontPath) {
-            this.subTitleFont = Typeface.createFromAsset(activity.getAssets(), subTitleFontPath);
+            this.subTitleFont = Typeface.createFromAsset(context.getAssets(), subTitleFontPath);
             return this;
         }
 
@@ -345,7 +352,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setBodyFont(String bodyFontPath) {
-            this.bodyFont = Typeface.createFromAsset(activity.getAssets(), bodyFontPath);
+            this.bodyFont = Typeface.createFromAsset(context.getAssets(), bodyFontPath);
             return this;
         }
 
@@ -368,17 +375,17 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-        public Activity getActivity() {
-            return activity;
+        public Context getContext() {
+            return context;
         }
 
-        public Builder setActivity(Activity activity) {
-            this.activity = activity;
+        public Builder setActivity(Context context) {
+            this.context = context;
             return this;
         }
 
-        public Builder(Activity context) {
-            this.activity = context;
+        public Builder(Context context) {
+            this.context = context;
         }
 
         public int getPositiveTextColor() {
@@ -461,7 +468,7 @@ public class FancyAlertDialog extends DialogFragment {
 
 
         public Builder setPositiveButtonText(int positiveButtonText) {
-            this.positiveButtonText = activity.getString(positiveButtonText);
+            this.positiveButtonText = context.getString(positiveButtonText);
             return this;
         }
 
@@ -480,7 +487,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setNegativeButtonText(int negativeButtonText) {
-            this.negativeButtonText = activity.getString(negativeButtonText);
+            this.negativeButtonText = context.getString(negativeButtonText);
             return this;
         }
 
@@ -494,7 +501,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setTextTitle(int textTitle) {
-            this.textTitle = activity.getString(textTitle);
+            this.textTitle = context.getString(textTitle);
             return this;
         }
 
@@ -508,7 +515,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setTextSubTitle(int textSubTitle) {
-            this.textSubTitle = activity.getString(textSubTitle);
+            this.textSubTitle = context.getString(textSubTitle);
             return this;
         }
 
@@ -522,7 +529,7 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
         public Builder setBody(int body) {
-            this.body = activity.getString(body);
+            this.body = context.getString(body);
             return this;
         }
 
@@ -551,12 +558,20 @@ public class FancyAlertDialog extends DialogFragment {
 
 
         public Dialog show() {
-            return FancyAlertDialog.getInstance().show(activity, this);
+            return FancyAlertDialog.getInstance().show(((Activity) context), this);
         }
 
 
     }
 
+
+    @Override
+    public void onPause() {
+        if (isAdded() && getActivity() != null) {
+            builder = null;
+        }
+        super.onPause();
+    }
 
     public interface OnPositiveClicked {
         void OnClick(View view, Dialog dialog);
@@ -572,9 +587,4 @@ public class FancyAlertDialog extends DialogFragment {
         CENTER
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        this.builder = null;
-    }
 }
