@@ -51,34 +51,23 @@ public class FancyAlertDialog extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         this.setCancelable(true);
         setRetainInstance(true);
-        super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
             try {
-                if (isAdded() && getActivity() != null)
-                    if (builder != null)
-                        builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
+                if (builder != null)
+                    builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
             } catch (Exception e) {
                 Log.d(TAG, e.toString());
             }
-
         }
-
-
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        try {
-            if (isAdded() && getActivity() != null)
-                if (builder != null)
-                    outState.putSerializable(Builder.class.getSimpleName(), builder);
-        } catch (Exception e) {
-            Log.d(TAG, e.toString());
-        }
-
-
+        if (builder != null)
+            outState.putParcelable(Builder.class.getSimpleName(), builder);
     }
 
 
@@ -134,6 +123,7 @@ public class FancyAlertDialog extends DialogFragment {
                     positive.setTextColor(ContextCompat.getColor(getActivity(), builder.getPositiveTextColor()));
                 }
                 if (builder.getOnPositiveClicked() != null) {
+                    Log.d("OnPositive", "Clicked");
                     positive.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -161,7 +151,6 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setVisibility(View.GONE);
             }
 
-
             if (builder.getImageRecourse() != 0) {
                 Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getImageRecourse(), getActivity().getTheme());
                 image.setImageDrawable(imageRes);
@@ -174,7 +163,6 @@ public class FancyAlertDialog extends DialogFragment {
             if (builder.getBackgroundColor() != 0) {
                 cardView.setCardBackgroundColor(ContextCompat.getColor(getActivity(), builder.getBackgroundColor()));
             }
-
 
             if (builder.isAutoHide()) {
                 int time = builder.getTimeToHide() != 0 ? builder.getTimeToHide() : 10000;
@@ -251,7 +239,6 @@ public class FancyAlertDialog extends DialogFragment {
             show(((AppCompatActivity) activity).getSupportFragmentManager(), TAG);
         return getDialog();
     }
-
 
     public static class Builder implements Serializable {
 
@@ -551,19 +538,14 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-
         public Builder build() {
             return this;
         }
 
-
         public Dialog show() {
             return FancyAlertDialog.getInstance().show(((Activity) context), this);
         }
-
-
     }
-
 
     @Override
     public void onPause() {
@@ -586,5 +568,4 @@ public class FancyAlertDialog extends DialogFragment {
         RIGHT,
         CENTER
     }
-
 }
