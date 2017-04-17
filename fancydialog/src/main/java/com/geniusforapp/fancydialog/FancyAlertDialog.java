@@ -8,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.graphics.drawable.VectorDrawableCompat;
@@ -25,8 +27,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.Serializable;
 
 /**
  * Created by ahmadnajar on 3/8/17.
@@ -50,35 +50,21 @@ public class FancyAlertDialog extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         this.setCancelable(true);
-        setRetainInstance(true);
-        super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            try {
-                if (isAdded() && getActivity() != null)
-                    if (builder != null)
-                        builder = (Builder) savedInstanceState.getSerializable(Builder.class.getSimpleName());
-            } catch (Exception e) {
-                Log.d(TAG, e.toString());
+            if (builder != null) {
+                builder = (Builder) savedInstanceState.getParcelable(Builder.class.getSimpleName());
             }
-
         }
-
-
+        setRetainInstance(true);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        try {
-            if (isAdded() && getActivity() != null)
-                if (builder != null)
-                    outState.putSerializable(Builder.class.getSimpleName(), builder);
-        } catch (Exception e) {
-            Log.d(TAG, e.toString());
-        }
-
-
+        if (builder != null)
+            outState.putParcelable(Builder.class.getSimpleName(), builder);
     }
 
 
@@ -134,6 +120,7 @@ public class FancyAlertDialog extends DialogFragment {
                     positive.setTextColor(ContextCompat.getColor(getActivity(), builder.getPositiveTextColor()));
                 }
                 if (builder.getOnPositiveClicked() != null) {
+                    Log.d("OnPositive", "Clicked");
                     positive.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -161,7 +148,6 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setVisibility(View.GONE);
             }
 
-
             if (builder.getImageRecourse() != 0) {
                 Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getImageRecourse(), getActivity().getTheme());
                 image.setImageDrawable(imageRes);
@@ -174,7 +160,6 @@ public class FancyAlertDialog extends DialogFragment {
             if (builder.getBackgroundColor() != 0) {
                 cardView.setCardBackgroundColor(ContextCompat.getColor(getActivity(), builder.getBackgroundColor()));
             }
-
 
             if (builder.isAutoHide()) {
                 int time = builder.getTimeToHide() != 0 ? builder.getTimeToHide() : 10000;
@@ -252,8 +237,7 @@ public class FancyAlertDialog extends DialogFragment {
         return getDialog();
     }
 
-
-    public static class Builder implements Serializable {
+    public static class Builder implements Parcelable {
 
         private String positiveButtonText;
         private String negativeButtonText;
@@ -291,6 +275,35 @@ public class FancyAlertDialog extends DialogFragment {
         private Context context;
 
         private PanelGravity buttonsGravity;
+
+        protected Builder(Parcel in) {
+            positiveButtonText = in.readString();
+            negativeButtonText = in.readString();
+            textTitle = in.readString();
+            textSubTitle = in.readString();
+            body = in.readString();
+            autoHide = in.readByte() != 0;
+            timeToHide = in.readInt();
+            positiveTextColor = in.readInt();
+            backgroundColor = in.readInt();
+            negativeColor = in.readInt();
+            titleColor = in.readInt();
+            subtitleColor = in.readInt();
+            bodyColor = in.readInt();
+            imageRecourse = in.readInt();
+        }
+
+        public static final Creator<Builder> CREATOR = new Creator<Builder>() {
+            @Override
+            public Builder createFromParcel(Parcel in) {
+                return new Builder(in);
+            }
+
+            @Override
+            public Builder[] newArray(int size) {
+                return new Builder[size];
+            }
+        };
 
         public PanelGravity getButtonsGravity() {
             return buttonsGravity;
@@ -551,26 +564,41 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-
         public Builder build() {
             return this;
         }
-
 
         public Dialog show() {
             return FancyAlertDialog.getInstance().show(((Activity) context), this);
         }
 
+        @Override
+        public int describeContents() {
+            return 0;
+        }
 
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(positiveButtonText);
+            parcel.writeString(negativeButtonText);
+            parcel.writeString(textTitle);
+            parcel.writeString(textSubTitle);
+            parcel.writeString(body);
+            parcel.writeByte((byte) (autoHide ? 1 : 0));
+            parcel.writeInt(timeToHide);
+            parcel.writeInt(positiveTextColor);
+            parcel.writeInt(backgroundColor);
+            parcel.writeInt(negativeColor);
+            parcel.writeInt(titleColor);
+            parcel.writeInt(subtitleColor);
+            parcel.writeInt(bodyColor);
+            parcel.writeInt(imageRecourse);
+        }
     }
 
-
     @Override
-    public void onPause() {
-        if (isAdded() && getActivity() != null) {
-            builder = null;
-        }
-        super.onPause();
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     public interface OnPositiveClicked {
@@ -586,5 +614,4 @@ public class FancyAlertDialog extends DialogFragment {
         RIGHT,
         CENTER
     }
-
 }
