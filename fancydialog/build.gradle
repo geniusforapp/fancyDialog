@@ -23,8 +23,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:design:25.3.0'
-    compile 'com.android.support:cardview-v7:25.3.0'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
 
 }
 
@@ -34,7 +34,7 @@ publish {
     userOrg = 'geniusapplications'
     groupId = 'com.geniusforapp.fancydialog'
     artifactId = 'FancyDialog'
-    publishVersion = '0.0.9'
+    publishVersion = '0.1.0'
     desc = 'A customisable AlertDialog for Android.'
     website = 'https://github.com/geniusforapp/fancyDialog'
 }
