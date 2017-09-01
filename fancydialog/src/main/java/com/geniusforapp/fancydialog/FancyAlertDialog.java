@@ -261,7 +261,7 @@ public class FancyAlertDialog extends DialogFragment {
         private int subtitleColor;
         private int bodyColor;
 
-        private int imageRecourse;
+        private int imageResource;
         private Drawable imageDrawable;
 
         private Typeface titleFont;
@@ -290,7 +290,7 @@ public class FancyAlertDialog extends DialogFragment {
             titleColor = in.readInt();
             subtitleColor = in.readInt();
             bodyColor = in.readInt();
-            imageRecourse = in.readInt();
+            imageResource = in.readInt();
         }
 
         public static final Creator<Builder> CREATOR = new Creator<Builder>() {
@@ -457,12 +457,12 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-        public int getImageRecourse() {
-            return imageRecourse;
+        public int getImageResource() {
+            return imageResource;
         }
 
-        public Builder setImageRecourse(int imageRecourse) {
-            this.imageRecourse = imageRecourse;
+        public Builder setImageResource(int imageResource) {
+            this.imageResource = imageResource;
             return this;
         }
 
@@ -592,7 +592,7 @@ public class FancyAlertDialog extends DialogFragment {
             parcel.writeInt(titleColor);
             parcel.writeInt(subtitleColor);
             parcel.writeInt(bodyColor);
-            parcel.writeInt(imageRecourse);
+            parcel.writeInt(imageResource);
         }
     }
 
