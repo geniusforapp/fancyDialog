@@ -7,11 +7,8 @@ A customisable AlertDialog for Android.
 
 
 # Whats new
- * Optimization
- * fix crash bug on home button pressed and back button
- * fix visibility for text view 
- * downgrade the min sdk to 15 
- * upgrade the support library
+* set text gravity for title, subtitle and text body
+
 
 ## Add Library
 ```
@@ -20,11 +17,11 @@ repositories {
     }
        
 
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.0'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.1'
 
 ```
 ## Code Sample
-```
+```java
 FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
                         .setImageRecourse(R.drawable.ic_cloud_computing)
                         .setTextTitle("UPLOAD")
@@ -46,7 +43,9 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
                                 Toast.makeText(MainActivity.this, "Updating", Toast.LENGTH_SHORT).show();
                             }
                         })
-                       /* .setAutoHide(true)*/
+                        .setBodyGravity(FancyAlertDialog.TextGravity.LEFT)
+                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setSubtitleGravity(FancyAlertDialog.TextGravity.RIGHT)
                         .build();
                 alert.show();
                 
@@ -54,7 +53,7 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 ```
 
 ## Code Sample for custom font
-```
+```java
 /* To change the the title font and body and content 
  you can use this methods */
  
@@ -67,7 +66,7 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 ```
 
 ## Code sample for change button panel gravity
-```
+```java
 builder.setButtonsGravity(PanelGravity.CENTER)
 ```
 
