@@ -120,7 +120,6 @@ public class FancyAlertDialog extends DialogFragment {
                     positive.setTextColor(ContextCompat.getColor(getActivity(), builder.getPositiveTextColor()));
                 }
                 if (builder.getOnPositiveClicked() != null) {
-                    Log.d("OnPositive", "Clicked");
                     positive.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -148,8 +147,8 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setVisibility(View.GONE);
             }
 
-            if (builder.getImageRecourse() != 0) {
-                Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getImageRecourse(), getActivity().getTheme());
+            if (builder.getimageResource() != 0) {
+                Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getimageResource(), getActivity().getTheme());
                 image.setImageDrawable(imageRes);
             } else if (builder.getImageDrawable() != null) {
                 image.setImageDrawable(builder.getImageDrawable());
@@ -261,7 +260,7 @@ public class FancyAlertDialog extends DialogFragment {
         private int subtitleColor;
         private int bodyColor;
 
-        private int imageRecourse;
+        private int imageResource;
         private Drawable imageDrawable;
 
         private Typeface titleFont;
@@ -290,7 +289,7 @@ public class FancyAlertDialog extends DialogFragment {
             titleColor = in.readInt();
             subtitleColor = in.readInt();
             bodyColor = in.readInt();
-            imageRecourse = in.readInt();
+            imageResource = in.readInt();
         }
 
         public static final Creator<Builder> CREATOR = new Creator<Builder>() {
@@ -457,12 +456,12 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-        public int getImageRecourse() {
-            return imageRecourse;
+        public int getimageResource() {
+            return imageResource;
         }
 
-        public Builder setImageRecourse(int imageRecourse) {
-            this.imageRecourse = imageRecourse;
+        public Builder setimageResource(int imageResource) {
+            this.imageResource = imageResource;
             return this;
         }
 
@@ -592,7 +591,7 @@ public class FancyAlertDialog extends DialogFragment {
             parcel.writeInt(titleColor);
             parcel.writeInt(subtitleColor);
             parcel.writeInt(bodyColor);
-            parcel.writeInt(imageRecourse);
+            parcel.writeInt(imageResource);
         }
     }
 
