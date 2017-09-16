@@ -18,7 +18,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -214,6 +213,33 @@ public class FancyAlertDialog extends DialogFragment {
                 if (buttonsPanel != null)
                     buttonsPanel.setLayoutParams(params);
             }
+
+            if (builder.getTitleGravity() != null) {
+                switch (builder.getTitleGravity()) {
+                    case LEFT:
+                        title.setGravity(Gravity.LEFT); break;
+                    case RIGHT:
+                        title.setGravity(Gravity.RIGHT); break;
+                }
+            }
+
+            if (builder.getSubtitleGravity() != null) {
+                switch (builder.getSubtitleGravity()) {
+                    case LEFT:
+                        subTitle.setGravity(Gravity.LEFT); break;
+                    case RIGHT:
+                        subTitle.setGravity(Gravity.RIGHT); break;
+                }
+            }
+
+            if (builder.getBodyGravity() != null) {
+                switch (builder.getBodyGravity()) {
+                    case LEFT:
+                        body.setGravity(Gravity.LEFT); break;
+                    case RIGHT:
+                        body.setGravity(Gravity.RIGHT); break;
+                }
+            }
         }
     }
 
@@ -274,6 +300,7 @@ public class FancyAlertDialog extends DialogFragment {
         private Context context;
 
         private PanelGravity buttonsGravity;
+        private TextGravity titleGravity, subtitleGravity, bodyGravity;
 
         protected Builder(Parcel in) {
             positiveButtonText = in.readString();
@@ -517,6 +544,33 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
+        public TextGravity getTitleGravity() {
+            return this.titleGravity;
+        }
+
+        public Builder setTitleGravity(TextGravity gravity) {
+            this.titleGravity = gravity;
+            return this;
+        }
+
+        public TextGravity getSubtitleGravity() {
+            return this.subtitleGravity;
+        }
+
+        public Builder setSubtitleGravity(TextGravity gravity) {
+            this.subtitleGravity = gravity;
+            return this;
+        }
+
+        public TextGravity getBodyGravity() {
+            return this.bodyGravity;
+        }
+
+        public Builder setBodyGravity(TextGravity gravity) {
+            this.bodyGravity = gravity;
+            return this;
+        }
+
         public String getTextSubTitle() {
             return textSubTitle;
         }
@@ -544,6 +598,8 @@ public class FancyAlertDialog extends DialogFragment {
             this.body = context.getString(body);
             return this;
         }
+
+
 
         public OnPositiveClicked getOnPositiveClicked() {
             return onPositiveClicked;
@@ -604,11 +660,17 @@ public class FancyAlertDialog extends DialogFragment {
         void OnClick(View view, Dialog dialog);
     }
 
-    public interface OnNegativeClicked {
+    interface OnNegativeClicked {
         void OnClick(View view, Dialog dialog);
     }
 
-    public enum PanelGravity {
+    public static enum PanelGravity {
+        LEFT,
+        RIGHT,
+        CENTER
+    }
+
+    public static enum TextGravity {
         LEFT,
         RIGHT,
         CENTER
