@@ -73,6 +73,12 @@ public class FancyAlertDialog extends DialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+
+        if (builder != null) {
+            dialog.setCancelable(builder.isCancelable());
+            instance.setCancelable(builder.isCancelable());
+        }
+
         return dialog;
     }
 
@@ -123,6 +129,7 @@ public class FancyAlertDialog extends DialogFragment {
                         @Override
                         public void onClick(View v) {
                             builder.getOnPositiveClicked().OnClick(v, getDialog());
+                            instance.dismiss();
                         }
                     });
                 }
@@ -139,6 +146,7 @@ public class FancyAlertDialog extends DialogFragment {
                         @Override
                         public void onClick(View v) {
                             builder.getOnNegativeClicked().OnClick(v, getDialog());
+                            instance.dismiss();
                         }
                     });
                 }
@@ -146,8 +154,8 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setVisibility(View.GONE);
             }
 
-            if (builder.getimageResource() != 0) {
-                Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getimageResource(), getActivity().getTheme());
+            if (builder.getImageResource() != 0) {
+                Drawable imageRes = VectorDrawableCompat.create(getResources(), builder.getImageResource(), getActivity().getTheme());
                 image.setImageDrawable(imageRes);
             } else if (builder.getImageDrawable() != null) {
                 image.setImageDrawable(builder.getImageDrawable());
@@ -301,6 +309,7 @@ public class FancyAlertDialog extends DialogFragment {
 
         private PanelGravity buttonsGravity;
         private TextGravity titleGravity, subtitleGravity, bodyGravity;
+        private boolean cancelable;
 
         protected Builder(Parcel in) {
             positiveButtonText = in.readString();
@@ -317,6 +326,7 @@ public class FancyAlertDialog extends DialogFragment {
             subtitleColor = in.readInt();
             bodyColor = in.readInt();
             imageResource = in.readInt();
+            cancelable = in.readByte() != 0;
         }
 
         public static final Creator<Builder> CREATOR = new Creator<Builder>() {
@@ -414,6 +424,15 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
+        public boolean isCancelable() {
+            return cancelable;
+        }
+
+        public Builder setCancelable(boolean cancelable) {
+            this.cancelable = cancelable;
+            return this;
+        }
+
         public Context getContext() {
             return context;
         }
@@ -483,7 +502,7 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
-        public int getimageResource() {
+        public int getImageResource() {
             return imageResource;
         }
 
@@ -627,6 +646,10 @@ public class FancyAlertDialog extends DialogFragment {
             return FancyAlertDialog.getInstance().show(((Activity) context), this);
         }
 
+        public void dismiss() {
+            FancyAlertDialog.getInstance().dismiss();
+        }
+
         @Override
         public int describeContents() {
             return 0;
@@ -648,6 +671,7 @@ public class FancyAlertDialog extends DialogFragment {
             parcel.writeInt(subtitleColor);
             parcel.writeInt(bodyColor);
             parcel.writeInt(imageResource);
+            parcel.writeByte((byte) (cancelable ? 1 : 0));
         }
     }
 
