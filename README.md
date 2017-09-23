@@ -1,6 +1,6 @@
 # FancyDialog
 ************************************** Sorry, currently this app is outdated **************************************
-<a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a>
+<a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a> <br />
 ************************************** Sorry, currently this app is outdated **************************************
 
 A customisable AlertDialog for Android.
