@@ -1,5 +1,7 @@
 # FancyDialog
+************************************** Sorry, currently this app is outdated **************************************
 <a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a>
+************************************** Sorry, currently this app is outdated **************************************
 
 A customisable AlertDialog for Android.
 
@@ -8,17 +10,15 @@ A customisable AlertDialog for Android.
 
 # Whats new
 * set text gravity for title, subtitle and text body
+* set dialog cancelable
 
 
 ## Add Library
 ```
 repositories {
         jcenter()
-    }
-       
-
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.1'
-
+}    
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.2'
 ```
 ## Code Sample
 ```java
@@ -46,10 +46,9 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
                         .setBodyGravity(FancyAlertDialog.TextGravity.LEFT)
                         .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
                         .setSubtitleGravity(FancyAlertDialog.TextGravity.RIGHT)
+                        .setCancelable(false)
                         .build();
-                alert.show();
-                
-                
+                alert.show();           
 ```
 
 ## Code Sample for custom font
@@ -61,22 +60,12 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
  builder.setNegativeButtonFont("fonts/lato.ttf");
  builder.setTitleFont("fonts/lato.ttf");
  builder.setSubTitleFont("fonts/lato.ttf");
- 
- 
 ```
 
 ## Code sample for change button panel gravity
 ```java
 builder.setButtonsGravity(PanelGravity.CENTER)
 ```
-
-## Tips
-tips will help the developer to program more library
-
-<p><h3><a href="https://www.paypal.me/AhmadNajar/5">Coffee</a></h3></p>
-<p><h3><a href="https://www.paypal.me/AhmadNajar/10">Donut</a></h3></p>
-<p><h3><a href="https://www.paypal.me/AhmadNajar/10">Lunch</a></h3></p>
-
 
 ### Pull requests are welcome!
 
@@ -89,7 +78,6 @@ If you've fixed a bug or have a feature you've added, just create a pull request
 Please send a pull request if you would like to be added here.
 
 ## License
-Copyright 2017 Ahmad Najar
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
