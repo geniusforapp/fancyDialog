@@ -199,6 +199,11 @@ public class FancyAlertDialog extends DialogFragment {
                 negative.setTypeface(builder.getAlertFont());
             }
 
+
+            if (builder.isCancelable()) {
+                getDialog().setCancelable(builder.isCancelable());
+            }
+
             if (builder.getButtonsGravity() != null) {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 switch (builder.getButtonsGravity()) {
@@ -276,6 +281,9 @@ public class FancyAlertDialog extends DialogFragment {
 
         private PanelGravity buttonsGravity;
 
+        private boolean cancelable;
+
+
         protected Builder(Parcel in) {
             positiveButtonText = in.readString();
             negativeButtonText = in.readString();
@@ -291,6 +299,7 @@ public class FancyAlertDialog extends DialogFragment {
             subtitleColor = in.readInt();
             bodyColor = in.readInt();
             imageRecourse = in.readInt();
+            cancelable = in.readByte() != 0;
         }
 
         public static final Creator<Builder> CREATOR = new Creator<Builder>() {
@@ -564,6 +573,15 @@ public class FancyAlertDialog extends DialogFragment {
             return this;
         }
 
+        public boolean isCancelable() {
+            return cancelable;
+        }
+
+        public Builder setCancelable(boolean cancelable) {
+            this.cancelable = cancelable;
+            return this;
+        }
+
         public Builder build() {
             return this;
         }
@@ -593,6 +611,7 @@ public class FancyAlertDialog extends DialogFragment {
             parcel.writeInt(subtitleColor);
             parcel.writeInt(bodyColor);
             parcel.writeInt(imageRecourse);
+            parcel.writeByte((byte) (autoHide ? 1 : 0));
         }
     }
 

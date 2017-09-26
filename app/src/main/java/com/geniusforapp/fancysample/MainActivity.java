@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         .setBody("New DATA has ben added to the device do you want to sync it with the service")
                         .setPositiveButtonText("Continue")
                         .setPositiveColor(R.color.colorPositive)
+                        .setCancelable(true)
                         .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                             @Override
                             public void OnClick(View view, Dialog dialog) {
