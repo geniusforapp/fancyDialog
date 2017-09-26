@@ -32,9 +32,10 @@
             <TextView
                 android:id="@+id/title"
                 style="@style/Base.TextAppearance.AppCompat.Large"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="16dp"
@@ -43,9 +44,10 @@
             <TextView
                 android:id="@+id/sub_title"
                 style="@style/Base.TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="12dp"
@@ -54,7 +56,7 @@
             <TextView
                 android:id="@+id/body"
                 style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingLeft="16dp"
@@ -62,6 +64,13 @@
                 android:paddingTop="8dp"
                 android:textColor="#9e9e9e"
                 android:textStyle="bold" />
+
+            <!-- START Classic Android hack to prevent dialog from squishing itself horribly -->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <!-- STOP Classic Android hack to prevent dialog from squishing itself horribly -->
+
 
             <LinearLayout
                 android:id="@+id/buttons_panel"
