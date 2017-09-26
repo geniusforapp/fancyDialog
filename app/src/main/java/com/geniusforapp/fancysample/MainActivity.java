@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               buildAndShowDialog();
+                buildAndShowDialog();
             }
         });
         setupDialogToSustainAfterRotation(fab);
@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
                         ((CustomApplication) getApplication()).setDialogOpened(false);
                     }
                 }).setAlertFont("Roboto-Bold.ttf")
-                .setBodyGravity(FancyAlertDialog.TextGravity.LEFT)
-                .setTitleGravity(FancyAlertDialog.TextGravity.LEFT)
-                .setSubtitleGravity(FancyAlertDialog.TextGravity.LEFT)
-                .setCancelable(true)
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
                 .build();
         ((CustomApplication) getApplication()).setDialogOpened(true);
         dialog.show();
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // then check if dialog was previously opened
-                if(((CustomApplication) getApplication()).wasDialogOpened()) {
+                if (((CustomApplication) getApplication()).wasDialogOpened()) {
                     buildAndShowDialog();
                 }
             }

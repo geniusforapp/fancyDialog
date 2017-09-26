@@ -1,7 +1,7 @@
 # FancyDialog
-************************************** Sorry, currently this app is outdated **************************************
+
 <a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a> <br />
-************************************** Sorry, currently this app is outdated **************************************
+ Sorry, currently this app is outdated 
 
 A customisable AlertDialog for Android.
 
@@ -18,10 +18,10 @@ A customisable AlertDialog for Android.
 repositories {
         jcenter()
 }    
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.2'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.3'
 ```
 ## Code Sample
-```java
+```
 FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
                         .setImageRecourse(R.drawable.ic_cloud_computing)
                         .setTextTitle("UPLOAD")
@@ -52,7 +52,7 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 ```
 
 ## Code Sample for custom font
-```java
+```
 /* To change the the title font and body and content 
  you can use this methods */
  
@@ -63,7 +63,7 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 ```
 
 ## Code sample for change button panel gravity
-```java
+```
 builder.setButtonsGravity(PanelGravity.CENTER)
 ```
 
