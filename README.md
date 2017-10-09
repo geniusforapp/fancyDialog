@@ -18,7 +18,7 @@ A customisable AlertDialog for Android.
 repositories {
         jcenter()
 }    
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.3'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.4'
 ```
 ## Code Sample
 ```
