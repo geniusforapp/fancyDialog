@@ -225,27 +225,33 @@ public class FancyAlertDialog extends DialogFragment {
             if (builder.getTitleGravity() != null) {
                 switch (builder.getTitleGravity()) {
                     case LEFT:
-                        title.setGravity(Gravity.LEFT); break;
+                        title.setGravity(Gravity.LEFT);
+                        break;
                     case RIGHT:
-                        title.setGravity(Gravity.RIGHT); break;
+                        title.setGravity(Gravity.RIGHT);
+                        break;
                 }
             }
 
             if (builder.getSubtitleGravity() != null) {
                 switch (builder.getSubtitleGravity()) {
                     case LEFT:
-                        subTitle.setGravity(Gravity.LEFT); break;
+                        subTitle.setGravity(Gravity.LEFT);
+                        break;
                     case RIGHT:
-                        subTitle.setGravity(Gravity.RIGHT); break;
+                        subTitle.setGravity(Gravity.RIGHT);
+                        break;
                 }
             }
 
             if (builder.getBodyGravity() != null) {
                 switch (builder.getBodyGravity()) {
                     case LEFT:
-                        body.setGravity(Gravity.LEFT); break;
+                        body.setGravity(Gravity.LEFT);
+                        break;
                     case RIGHT:
-                        body.setGravity(Gravity.RIGHT); break;
+                        body.setGravity(Gravity.RIGHT);
+                        break;
                 }
             }
         }
@@ -619,7 +625,6 @@ public class FancyAlertDialog extends DialogFragment {
         }
 
 
-
         public OnPositiveClicked getOnPositiveClicked() {
             return onPositiveClicked;
         }
@@ -684,17 +689,17 @@ public class FancyAlertDialog extends DialogFragment {
         void OnClick(View view, Dialog dialog);
     }
 
-    interface OnNegativeClicked {
+    public interface OnNegativeClicked {
         void OnClick(View view, Dialog dialog);
     }
 
-    public static enum PanelGravity {
+    public enum PanelGravity {
         LEFT,
         RIGHT,
         CENTER
     }
 
-    public static enum TextGravity {
+    public enum TextGravity {
         LEFT,
         RIGHT,
         CENTER
