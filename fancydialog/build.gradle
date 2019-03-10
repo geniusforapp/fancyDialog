@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -23,8 +23,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.google.android.material:material:1.1.0-alpha04'
+    compile 'androidx.cardview:cardview:1.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }
 
@@ -37,6 +38,9 @@ publish {
     publishVersion = '0.1.4'
     desc = 'A customisable AlertDialog for Android.'
     website = 'https://github.com/geniusforapp/fancyDialog'
+}
+repositories {
+    mavenCentral()
 }
 
 
