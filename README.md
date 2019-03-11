@@ -11,9 +11,9 @@ A customisable AlertDialog for Android.
 ## Add Library
 ```gradle
 repositories {
-        jcenter()
+       maven { url 'https://jitpack.io' }
 }    
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.5'
+implementation 'com.github.geniusforapp:fancyDialog:1.0'
 ```
 
 
