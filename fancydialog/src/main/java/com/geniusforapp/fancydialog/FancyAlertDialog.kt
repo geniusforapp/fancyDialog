@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.dialog_fancy_alert.*
 class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, FancyAlertDialog>(context) {
 
 
+    private val fancyDialogMargin = context.resources.getDimension(R.dimen.fancyDialogMargin).toInt()
+
     override var dialogInstance: FancyAlertDialog = this
 
     override fun bindView(saveInstanceState: Bundle?) {
@@ -22,6 +24,29 @@ class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, F
         initTypeFace()
         initTextGravity()
         initPanelGravity()
+        initViability()
+    }
+
+    private fun initViability() {
+        // hide the views on null
+        if (baseFancyBuilder.imageDrawable == null) {
+            imageIcon.gone()
+        } else {
+            imageIcon.visible()
+        }
+        // hide the views on null
+        if (baseFancyBuilder.actionPositive == null) {
+            actionPositive.gone()
+        } else {
+            actionPositive.visible()
+        }
+
+        // hide the views on null
+        if (baseFancyBuilder.actionNegative == null) {
+            actionNegative.gone()
+        } else {
+            actionNegative.visible()
+        }
     }
 
     private fun initPanelGravity() {
@@ -35,43 +60,52 @@ class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, F
     private fun panelCenter() {
         actionNegative.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
                 .apply {
-                    startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+                    startToStart = textSubTitle.id
                     endToStart = actionPositive.id
                     bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
                     topToBottom = textSubTitle.id
-                    setMargins(0,
-                            context.resources.getDimension(R.dimen.fancyDialogMargin).toInt(),
-                            0,
-                            context.resources.getDimension(R.dimen.fancyDialogMargin).toInt())
+                    setMargins(fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin)
                     horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_PACKED
                 }
 
         actionPositive.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
                 .apply {
                     startToEnd = actionNegative.id
-                    endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+                    endToEnd = textSubTitle.id
                     bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
                     topToBottom = textSubTitle.id
-                    setMargins(0,
-                            context.resources.getDimension(R.dimen.fancyDialogMargin).toInt(),
-                            0,
-                            context.resources.getDimension(R.dimen.fancyDialogMargin).toInt())
+                    setMargins(fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin)
                 }
     }
 
     private fun panelStart() {
         actionNegative.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
                 .apply {
-                    startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+                    startToStart = textSubTitle.id
                     endToStart = actionPositive.id
                     bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
-
+                    topToBottom = textSubTitle.id
+                    setMargins(fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin)
                 }
 
         actionPositive.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
                 .apply {
                     startToEnd = actionNegative.id
                     bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+                    topToBottom = textSubTitle.id
+                    setMargins(fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin,
+                            fancyDialogMargin)
                 }
     }
 
@@ -101,20 +135,6 @@ class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, F
     }
 
     private fun initActions() {
-        // hide the views on null
-        if (baseFancyBuilder.actionPositive == null) {
-            actionPositive.gone()
-        } else {
-            actionPositive.visible()
-        }
-
-        // hide the views on null
-        if (baseFancyBuilder.actionNegative == null) {
-            actionNegative.gone()
-        } else {
-            actionNegative.visible()
-        }
-
         actionPositive.text = baseFancyBuilder.actionPositive
         actionNegative.text = baseFancyBuilder.actionNegative
 
@@ -124,6 +144,7 @@ class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, F
         textTitle.text = baseFancyBuilder.title
         textSubTitle.text = baseFancyBuilder.subTitle
         imageIcon.setImageDrawable(baseFancyBuilder.imageDrawable)
+
     }
 
     private fun initBuilder() {

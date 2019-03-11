@@ -3,10 +3,7 @@ package com.geniusforapp.fancydialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
 import com.geniusforapp.fancydialog.builders.BaseFancyBuilder
 
 
@@ -27,7 +24,6 @@ abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Con
         this.show()
         return this
     }
-
 
     abstract fun bindView(saveInstanceState: Bundle?)
 
