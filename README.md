@@ -8,63 +8,39 @@ A customisable AlertDialog for Android.
 <img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png" width="1024" hight="500"/>
 
 
-# Whats new
-* set text gravity for title, subtitle and text body
-* set dialog cancelable
-
-
 ## Add Library
-```
+```gradle
 repositories {
         jcenter()
 }    
-compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.4'
+compile 'com.geniusforapp.fancydialog:FancyDialog:0.1.5'
 ```
+
+
 ## Code Sample
-```
-FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
-                        .setImageRecourse(R.drawable.ic_cloud_computing)
-                        .setTextTitle("UPLOAD")
-                        .setTextSubTitle("128GB/500GB")
-                        .setBody("New DATA has ben added to the device do you want to sync it with the service")
-                        .setNegativeColor(R.color.colorNegative)
-                        .setNegativeButtonText("Later")
-                        .setOnNegativeClicked(new FancyAlertDialog.OnNegativeClicked() {
-                            @Override
-                            public void OnClick(View view, Dialog dialog) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .setPositiveButtonText("Continue")
-                        .setPositiveColor(R.color.colorPositive)
-                        .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
-                            @Override
-                            public void OnClick(View view, Dialog dialog) {
-                                Toast.makeText(MainActivity.this, "Updating", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setBodyGravity(FancyAlertDialog.TextGravity.LEFT)
-                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setSubtitleGravity(FancyAlertDialog.TextGravity.RIGHT)
-                        .setCancelable(false)
-                        .build();
-                alert.show();           
-```
+```kotlin
+  val dialog = FancyDialogBuilder(this)
+                .withCanCancel(false)
+                .withTitleTypeFace(R.font.roboto_bold)
+                .withSubTitleTypeFace(R.font.roboto_medium)
+                .withActionPositiveTypeFace(R.font.roboto)
+                .withActionNegativeTypeFace(R.font.roboto)
+                .withTextGravity(START)
+                .withPanelGravity(END)
+                .withTitle(R.string.dialog_text_title)
+                .withSubTitle(R.string.dialog_text_message)
+                .withPositive(R.string.dialog_action_yes, object : OnActionClickedListener {
+                    override fun onClick(view: View, dialog: Dialog) {
+                        Toast.makeText(this@MainActivity, "Why Me ?", Toast.LENGTH_LONG).show()
+                    }
+                })
+                .withNegative(R.string.dialog_action_no, object : OnActionClickedListener {
+                    override fun onClick(view: View, dialog: Dialog) {
+                        dialog.dismiss()
 
-## Code Sample for custom font
-```
-/* To change the the title font and body and content 
- you can use this methods */
- 
- fancyDialogBuilder.setPositiveButtonFont("fonts/lato.ttf");
- fancyDialogBuilder.setNegativeButtonFont("fonts/lato.ttf");
- fancyDialogBuilder.setTitleFont("fonts/lato.ttf");
- fancyDialogBuilder.setSubTitleFont("fonts/lato.ttf");
-```
-
-## Code sample for change button panel gravity
-```
-fancyDialogBuilder.setButtonsGravity(PanelGravity.CENTER)
+                    }
+                })
+        dialog.show()
 ```
 
 ### Pull requests are welcome!

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-
+apply plugin: 'com.novoda.bintray-release'
 
 ext {
     compile_sdk_version = 28
@@ -13,7 +13,7 @@ ext {
 
     publishData = [:]
     publishData.userOrg = "geniusapplications"
-    publishData.publishVersion = "0.1.4"
+    publishData.publishVersion = "0.1.6"
     publishData.groupId = "com.geniusforapp.fancydialog"
     publishData.artifactId = "FancyDialog"
     publishData.description = "A customisable AlertDialog for Android."
@@ -42,9 +42,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
 }
-
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.novoda.bintray-release'
 publish {
     userOrg = publishData.userOrg
     groupId = publishData.groupId
