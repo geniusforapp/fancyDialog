@@ -1,97 +1,97 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fancyDialogMargin"
+        app:cardBackgroundColor="?dialogBackground"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageIcon"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/fancyDialogIconSize"
+                android:layout_height="@dimen/fancyDialogIconSize"
                 android:layout_margin="@dimen/fancyDialogMargin"
                 app:layout_constraintBottom_toTopOf="@id/textTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_picture"
-                />
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:src="@drawable/ic_picture" />
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fancyDialogMargin"
+                android:layout_marginEnd="@dimen/fancyDialogMargin"
+                android:gravity="center"
+                android:paddingStart="@dimen/fancyDialogPadding"
+                android:paddingEnd="@dimen/fancyDialogPadding"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/colorTitle"
+                android:textColor="?attr/textTitleColor"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/textSubTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageIcon"
-                tools:text="Access Permissions"
-                />
+                tools:text="Access Permissions" />
 
             <TextView
                 android:id="@+id/textSubTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/fancyDialogMargin"
                 android:layout_marginEnd="@dimen/fancyDialogMargin"
                 android:gravity="center"
-                android:padding="@dimen/fancyDialogPadding"
+                android:paddingStart="@dimen/fancyDialogPadding"
+                android:paddingEnd="@dimen/fancyDialogPadding"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorSubTitle"
+                android:textColor="?textSubTitleColor"
+                app:layout_constraintBottom_toTopOf="@id/actionPositive"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textTitle"
-                tools:text="Please accept the permissions to allow us to open gallery to upload your profile picture"
-                />
+                app:layout_goneMarginBottom="@dimen/fancyDialogMargin"
+                tools:text="Please accept the permissions to allow us to open gallery to upload your profile picture" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/actionPositive"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?attr/positiveButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/fancyDialogMargin"
                 android:text="@android:string/ok"
-                android:textColor="@color/colorPositive"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textSubTitle"
-                />
+                app:layout_constraintTop_toBottomOf="@id/textSubTitle" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/actionNegative"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?attr/negativeButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fancyDialogMargin"
+                android:layout_marginEnd="@dimen/fancyDialogMargin"
                 android:text="@android:string/cancel"
-                android:textColor="@color/colorNegative"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/actionPositive"
-                app:layout_constraintTop_toBottomOf="@id/textSubTitle"
-                />
+                app:layout_constraintTop_toBottomOf="@id/textSubTitle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

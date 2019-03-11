@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FancySample</string>
     <string name="action_settings">Settings</string>
-    <string name="dialog_text_title">Synchronisation</string>
-    <string name="dialog_text_message">Are you sure you want to sync your data on the cloud don\'t worry you\'r data is safe with us?</string>
+    <string name="dialog_text_title">Grant Permission</string>
+    <string name="dialog_text_message">Please accept the permissions to access your gallery to select profile picture</string>
     <string name="dialog_action_yes">Yes</string>
     <string name="dialog_action_no">No</string>
 </resources>

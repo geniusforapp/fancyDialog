@@ -8,14 +8,8 @@ interface OnActionClickedListener {
 }
 
 
-enum class PanelGravity {
-    LEFT,
-    RIGHT,
-    CENTER
-}
-
-enum class TextGravity {
-    LEFT,
-    RIGHT,
+enum class Gravity {
+    START,
+    END,
     CENTER
 }

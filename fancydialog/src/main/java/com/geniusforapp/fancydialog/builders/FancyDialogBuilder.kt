@@ -3,6 +3,8 @@ package com.geniusforapp.fancydialog.builders
 import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.view.Gravity.CENTER
+import android.view.Gravity.END
 import androidx.annotation.DrawableRes
 import androidx.annotation.FontRes
 import androidx.annotation.StringRes
@@ -32,8 +34,22 @@ class FancyDialogBuilder(private val context: Context) : BaseFancyBuilder<FancyD
     var actionNegativeTypeFace: Typeface? = null
 
 
+    var textGravity: Int = CENTER
+    var panelGravity: Int = END
+
+
     fun withTitleTypeFace(@FontRes font: Int): FancyDialogBuilder {
         titleTypeFace = ResourcesCompat.getFont(context, font)
+        return this
+    }
+
+    fun withTextGravity(gravity: Int): FancyDialogBuilder {
+        textGravity = gravity
+        return this
+    }
+
+    fun withPanelGravity(gravity: Int): FancyDialogBuilder {
+        panelGravity = gravity
         return this
     }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="positiveButtonStyle" type="style" />
+    <attr name="negativeButtonStyle" type="style" />
+    <attr name="textTitleColor" type="color" />
+    <attr name="textSubTitleColor" type="color" />
+    <attr name="dialogBackground" type="color" />
+</resources>
