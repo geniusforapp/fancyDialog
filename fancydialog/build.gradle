@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.geniusforapp'
+version = '1.0'
 
 ext {
     compile_sdk_version = 28
@@ -41,13 +43,5 @@ dependencies {
     implementation "com.google.android.material:material:$material_design_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-}
-publish {
-    userOrg = publishData.userOrg
-    groupId = publishData.groupId
-    artifactId = publishData.artifactId
-    publishVersion = publishData.publishVersion
-    desc = publishData.description
-    website = publishData.website
 }
 
