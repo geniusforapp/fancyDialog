@@ -4,7 +4,11 @@
     <color name="colorPrimaryDark">#3a3e79</color>
     <color name="colorAccent">#3a3e79</color>
 
-    <color name="colorPositive">#3a3e79</color>
 
-    <color name="colorNegative">#E91E63</color>
+    <color name="colorPositive">#3a3e79</color>
+    <color name="colorNegative">#F44336</color>
+
+    <color name="colorTitle">#000000</color>
+    <color name="colorSubTitle">#3c3c3c</color>
+
 </resources>

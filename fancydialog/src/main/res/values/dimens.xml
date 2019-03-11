@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="fancyDialogMargin">16dp</dimen>
+    <dimen name="fancyDialogPadding">16dp</dimen>
+</resources>

@@ -56,15 +56,15 @@ FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(MainActivity.this)
 /* To change the the title font and body and content 
  you can use this methods */
  
- builder.setPositiveButtonFont("fonts/lato.ttf");
- builder.setNegativeButtonFont("fonts/lato.ttf");
- builder.setTitleFont("fonts/lato.ttf");
- builder.setSubTitleFont("fonts/lato.ttf");
+ fancyDialogBuilder.setPositiveButtonFont("fonts/lato.ttf");
+ fancyDialogBuilder.setNegativeButtonFont("fonts/lato.ttf");
+ fancyDialogBuilder.setTitleFont("fonts/lato.ttf");
+ fancyDialogBuilder.setSubTitleFont("fonts/lato.ttf");
 ```
 
 ## Code sample for change button panel gravity
 ```
-builder.setButtonsGravity(PanelGravity.CENTER)
+fancyDialogBuilder.setButtonsGravity(PanelGravity.CENTER)
 ```
 
 ### Pull requests are welcome!
