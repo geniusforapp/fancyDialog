@@ -9,6 +9,9 @@ import com.geniusforapp.fancydialog.builders.BaseFancyBuilder
 
 abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Context) : AlertDialog(context, R.style.FancyDialogTheme) {
 
+
+    val defStyle: Int = R.style.FancyDialogTheme
+
     open lateinit var baseFancyBuilder: T
 
     abstract var dialogInstance: D
@@ -29,4 +32,6 @@ abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Con
 
 
     abstract fun setContentView(): Int
+
+
 }

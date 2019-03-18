@@ -31,7 +31,7 @@ ext {
 }
 
 dependencies {
-    implementation project(':fancydialog')
+    implementation 'com.github.geniusforapp:fancyDialog:1.0'
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'com.google.android.material:material:1.1.0-alpha04'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

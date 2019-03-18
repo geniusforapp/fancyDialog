@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun buildAndShowDialog() {
         val dialog = FancyDialogBuilder(this)
-                .withCanCancel(false)
                 .withTitleTypeFace(R.font.roboto_bold)
                 .withSubTitleTypeFace(R.font.roboto_medium)
                 .withActionPositiveTypeFace(R.font.roboto)
@@ -42,8 +41,7 @@ class MainActivity : AppCompatActivity() {
                 })
                 .withNegative(R.string.dialog_action_no, object : OnActionClickedListener {
                     override fun onClick(view: View, dialog: Dialog) {
-                        dialog.dismiss()
-
+                        Toast.makeText(this@MainActivity, "Why Me ?", Toast.LENGTH_LONG).show()
                     }
                 })
         dialog.show()

@@ -2,5 +2,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="fancyDialogMargin">16dp</dimen>
     <dimen name="fancyDialogPadding">16dp</dimen>
-    <dimen name="fancyDialogIconSize">150dp</dimen>
+    <dimen name="fancyDialogIconSize">100dp</dimen>
 </resources>

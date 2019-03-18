@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="positiveButtonStyle" type="style" />
-    <attr name="negativeButtonStyle" type="style" />
-    <attr name="textTitleColor" type="color" />
-    <attr name="textSubTitleColor" type="color" />
-    <attr name="dialogBackground" type="color" />
+    <attr name="positiveButtonStyle" format="reference" />
+    <attr name="negativeButtonStyle" format="reference" />
+    <attr name="textTitleColor" format="color" />
+    <attr name="textSubTitleColor" format="color" />
+    <attr name="dialogBackground" format="color" />
+    <attr name="fancyDialogTheme" format="reference" />
+
 </resources>

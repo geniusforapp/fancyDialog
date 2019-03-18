@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3a3e79</color>
-    <color name="colorPrimaryDark">#3a3e79</color>
-    <color name="colorAccent">#3a3e79</color>
+    <color name="colorPrimary">#1E88E5</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#D81B60</color>
+
 
     <color name="colorPositive">#0396fd</color>
-    <color name="colorNegative">#ffb509</color>
+    <color name="colorNegative">#ffd86e</color>
+    <color name="colorDialogBackground">@android:color/white</color>
+
+    <color name="colorTitle">#000000</color>
+    <color name="colorSubTitle">#3c3c3c</color>
+
 </resources>

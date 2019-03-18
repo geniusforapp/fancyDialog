@@ -5,8 +5,8 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="positiveButtonStyle">@style/positiveButtonStyle</item>
         <item name="negativeButtonStyle">@style/negativeButtonStyle</item>
-        <item name="textTitleColor">@android:color/white</item>
-        <item name="textSubTitleColor">@android:color/white</item>
+        <item name="textTitleColor">@color/colorTitle</item>
+        <item name="textSubTitleColor">@color/colorSubTitle</item>
         <item name="dialogBackground">@color/colorDialogBackground</item>
     </style>
 
