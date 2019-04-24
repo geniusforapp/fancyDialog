@@ -6,4 +6,6 @@
 
     <color name="colorPositive">#0396fd</color>
     <color name="colorNegative">#ffb509</color>
+
+    <color name="colorDialogBackground">@color/colorTitle</color>
 </resources>
