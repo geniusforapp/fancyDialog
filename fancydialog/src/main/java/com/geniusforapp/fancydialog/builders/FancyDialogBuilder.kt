@@ -109,3 +109,5 @@ class FancyDialogBuilder(private val context: Context) : BaseFancyBuilder<FancyD
 
 
 }
+
+fun fancy(context: Context, block: FancyDialogBuilder.() -> Unit): FancyDialogBuilder = FancyDialogBuilder(context).apply(block)
