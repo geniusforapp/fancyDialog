@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import com.geniusforapp.fancydialog.builders.BaseFancyBuilder
 
 
-abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Context) : AlertDialog(context, R.style.FancyDialogTheme) {
+abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Context, style: Int = R.style.FancyDialogTheme) : AlertDialog(context, style) {
 
 
     val defStyle: Int = R.style.FancyDialogTheme
@@ -22,8 +22,10 @@ abstract class BaseFancyDialog<T : BaseFancyBuilder<*>, D : Dialog>(context: Con
         bindView(savedInstanceState)
     }
 
+    @Suppress("UNCHECKED_CAST")
     open fun show(baseFancyBuilder: BaseFancyBuilder<*>): Dialog? {
         this.baseFancyBuilder = baseFancyBuilder as T
+        this.setCanceledOnTouchOutside(baseFancyBuilder.isCancelable)
         this.show()
         return this
     }

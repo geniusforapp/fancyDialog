@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.annotation.BoolRes
 import androidx.annotation.StringRes
 import com.geniusforapp.fancydialog.FancyAlertDialog
+import com.geniusforapp.fancydialog.R
 
 
-abstract class BaseFancyBuilder<T>(private val context: Context) {
+abstract class BaseFancyBuilder<T>(private val context: Context, private var style: Int = R.style.FancyDialogTheme) {
 
 
     abstract var type: T
@@ -16,7 +17,8 @@ abstract class BaseFancyBuilder<T>(private val context: Context) {
     open var message: String? = null
     open var isCancelable = true
 
-    open fun withTitle(@StringRes title: String?): T {
+
+    open fun withTitle(title: String?): T {
         this.title = title
         return type
     }
@@ -33,7 +35,7 @@ abstract class BaseFancyBuilder<T>(private val context: Context) {
     }
 
 
-    open fun withSubTitle(@StringRes subTitle: String): T {
+    open fun withSubTitle(subTitle: String): T {
         this.subTitle = subTitle
         return type
     }
@@ -44,18 +46,18 @@ abstract class BaseFancyBuilder<T>(private val context: Context) {
     }
 
 
-    open fun withMessage(@StringRes message: String): T {
+    open fun withMessage(message: String): T {
         this.message = message
         return type
     }
 
-    open fun withCanCancel(@BoolRes canCancel: Boolean): T {
+    open fun withCanCancel(canCancel: Boolean): T {
         this.isCancelable = canCancel
         return type
     }
 
     private fun create(): FancyAlertDialog {
-        return FancyAlertDialog(context)
+        return FancyAlertDialog(context, style)
     }
 
 

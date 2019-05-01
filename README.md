@@ -1,45 +1,28 @@
-# FancyDialog
+# FancyDialog [![Download](https://jitpack.io/#geniusforapp/fancydialog/v1.0.2)]
 
-<a href='https://play.google.com/store/apps/details?id=com.geniusforapp.fancysample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="70" width="180"/></a> <br />
- Sorry, currently this app is outdated 
-
-A customisable AlertDialog for Android.
-
-<img src="https://raw.githubusercontent.com/ahmadnajar10/fancyDialog/master/device-2017-03-08-171007.png" width="1024" hight="500"/>
-
+> FancyDialog is a AlertDialog with some fancy styling and them the new version of it is completely build with kotlin 
 
 ## Add Library
 ```gradle
 repositories {
        maven { url 'https://jitpack.io' }
 }    
-implementation 'com.github.geniusforapp:fancyDialog:1.0'
+implementation 'com.github.geniusforapp:fancyDialog:1.0.2'
 ```
-
 
 ## Code Sample
 ```kotlin
-  val dialog = FancyDialogBuilder(this)
-                .withCanCancel(false)
+      val dialog = FancyDialogBuilder(this, R.style.CustomDialog)
+                .withImageIcon(R.drawable.ic_new_message)
                 .withTitleTypeFace(R.font.roboto_bold)
                 .withSubTitleTypeFace(R.font.roboto_medium)
-                .withActionPositiveTypeFace(R.font.roboto)
-                .withActionNegativeTypeFace(R.font.roboto)
-                .withTextGravity(START)
+                .withActionPositiveTypeFace(R.font.roboto_bold)
+                .withActionNegativeTypeFace(R.font.roboto_bold)
+                .withTextGravity(CENTER)
                 .withPanelGravity(END)
                 .withTitle(R.string.dialog_text_title)
                 .withSubTitle(R.string.dialog_text_message)
-                .withPositive(R.string.dialog_action_yes, object : OnActionClickedListener {
-                    override fun onClick(view: View, dialog: Dialog) {
-                        Toast.makeText(this@MainActivity, "Why Me ?", Toast.LENGTH_LONG).show()
-                    }
-                })
-                .withNegative(R.string.dialog_action_no, object : OnActionClickedListener {
-                    override fun onClick(view: View, dialog: Dialog) {
-                        dialog.dismiss()
-
-                    }
-                })
+                .withPositive(R.string.dialog_action_yes) { view, dialog -> dialog.dismiss() }
         dialog.show()
 ```
 

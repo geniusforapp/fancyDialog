@@ -9,7 +9,7 @@ import com.geniusforapp.fancydialog.ktx.gone
 import com.geniusforapp.fancydialog.ktx.visible
 import kotlinx.android.synthetic.main.dialog_fancy_alert.*
 
-class FancyAlertDialog(context: Context) : BaseFancyDialog<FancyDialogBuilder, FancyAlertDialog>(context) {
+class FancyAlertDialog(context: Context, style: Int = R.style.FancyDialogTheme) : BaseFancyDialog<FancyDialogBuilder, FancyAlertDialog>(context, style) {
 
 
     private val fancyDialogMargin = context.resources.getDimension(R.dimen.fancyDialogMargin).toInt()

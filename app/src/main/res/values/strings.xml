@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FancySample</string>
     <string name="action_settings">Settings</string>
-    <string name="dialog_text_title">Subscribe to our news</string>
-    <string name="dialog_text_message">Subscribe and receive your newsletter to follow the news about our fre</string>
+    <string name="dialog_text_title">Don\'t spoil the endgame</string>
+    <string name="dialog_text_message">Are you agree to don\'t spoil the movie?</string>
     <string name="dialog_action_yes">Yes</string>
     <string name="dialog_action_no">No</string>
 </resources>
