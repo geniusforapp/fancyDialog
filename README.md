@@ -1,5 +1,9 @@
 # FancyDialog
 
+<img src="../images/img1.jpg" height="350"/>
+<img src="../images/img2.jpg" height="350"/>
+
+
 > FancyDialog is a AlertDialog with some fancy styling and them the new version of it is completely build with kotlin 
 
 ## Add Library
