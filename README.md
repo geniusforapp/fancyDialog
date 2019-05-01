@@ -1,4 +1,4 @@
-# FancyDialog [![Download](https://jitpack.io/#geniusforapp/fancydialog/v1.0.2)]
+# FancyDialog
 
 > FancyDialog is a AlertDialog with some fancy styling and them the new version of it is completely build with kotlin 
 
