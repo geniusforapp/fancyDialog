@@ -1,19 +1,22 @@
 package com.geniusforapp.fancydialog.builders
 
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.view.Gravity.CENTER
 import android.view.Gravity.END
+import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.FontRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.geniusforapp.fancydialog.R
 import com.geniusforapp.fancydialog.interfaces.OnActionClickedListener
 
 
-class FancyDialogBuilder(private val context: Context) : BaseFancyBuilder<FancyDialogBuilder>(context) {
+class FancyDialogBuilder(private val context: Context, private var style: Int = R.style.FancyDialogTheme) : BaseFancyBuilder<FancyDialogBuilder>(context, style) {
 
 
     override var type: FancyDialogBuilder = this
@@ -71,33 +74,49 @@ class FancyDialogBuilder(private val context: Context) : BaseFancyBuilder<FancyD
 
 
     // with positive title and action
-    fun withPositive(@StringRes actionPositive: String, onActionPositiveClicked: OnActionClickedListener): FancyDialogBuilder {
+    fun withPositive(actionPositive: String, onActionPositiveClicked: (view: View, dialog: Dialog) -> Unit?): FancyDialogBuilder {
         this.actionPositive = actionPositive
-        this.onActionPositiveClicked = onActionPositiveClicked
+        this.onActionPositiveClicked = object : OnActionClickedListener {
+            override fun onClick(view: View, dialog: Dialog) {
+                onActionPositiveClicked(view, dialog)
+            }
+        }
         return this
     }
 
     // with positive title and action with int id
-    fun withPositive(@StringRes actionPositive: Int, onActionPositiveClicked: OnActionClickedListener): FancyDialogBuilder {
+    fun withPositive(@StringRes actionPositive: Int, onActionPositiveClicked: (view: View, dialog: Dialog) -> Unit?): FancyDialogBuilder {
         this.actionPositive = context.getString(actionPositive)
-        this.onActionPositiveClicked = onActionPositiveClicked
+        this.onActionPositiveClicked = object : OnActionClickedListener {
+            override fun onClick(view: View, dialog: Dialog) {
+                onActionPositiveClicked(view, dialog)
+            }
+        }
         return this
     }
 
-    fun withNegative(@StringRes actionNegative: String, onActionNegativeClicked: OnActionClickedListener): FancyDialogBuilder {
+    fun withNegative(actionNegative: String, onActionNegativeClicked: (view: View, dialog: Dialog) -> Unit?): FancyDialogBuilder {
         this.actionNegative = actionNegative
-        this.onActionNegativeClicked = onActionNegativeClicked
+        this.onActionNegativeClicked = object : OnActionClickedListener {
+            override fun onClick(view: View, dialog: Dialog) {
+                onActionNegativeClicked(view, dialog)
+            }
+        }
         return this
     }
 
-    fun withNegative(@StringRes actionNegative: Int, onActionNegativeClicked: OnActionClickedListener): FancyDialogBuilder {
+    fun withNegative(@StringRes actionNegative: Int, onActionNegativeClicked: (view: View, dialog: Dialog) -> Unit?): FancyDialogBuilder {
         this.actionNegative = context.getString(actionNegative)
-        this.onActionNegativeClicked = onActionNegativeClicked
+        this.onActionNegativeClicked = object : OnActionClickedListener {
+            override fun onClick(view: View, dialog: Dialog) {
+                onActionNegativeClicked(view, dialog)
+            }
+        }
         return this
     }
 
     // set the image Icon
-    fun withImageIcon(@DrawableRes imageDrawable: Drawable?): FancyDialogBuilder {
+    fun withImageIcon(imageDrawable: Drawable?): FancyDialogBuilder {
         this.imageDrawable = imageDrawable
         return this
     }
@@ -109,3 +128,5 @@ class FancyDialogBuilder(private val context: Context) : BaseFancyBuilder<FancyD
 
 
 }
+
+fun fancy(context: Context, block: FancyDialogBuilder.() -> Unit): FancyDialogBuilder = FancyDialogBuilder(context).apply(block)

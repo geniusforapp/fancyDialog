@@ -19,7 +19,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-    <style name="FancyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CustomDialog" parent="FancyDialogTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="positiveButtonStyle">@style/positiveButtonStyle</item>
@@ -29,22 +29,16 @@
         <item name="dialogBackground">@color/colorDialogBackground</item>
     </style>
 
-    <style name="positiveButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/colorAccent</item>
-        <item name="strokeColor">@color/colorAccent</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="rippleColor">@color/colorAccent</item>
+    <style name="positiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="strokeColor">@color/colorTitle</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="rippleColor">@color/colorTitle</item>
     </style>
 
-
-    <style name="negativeButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/colorAccent</item>
-        <item name="strokeColor">@color/colorAccent</item>
-        <item name="cornerRadius">50dp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="rippleColor">@color/colorAccent</item>
+    <style name="negativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="strokeColor">@color/colorTitle</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="rippleColor">@color/colorTitle</item>
     </style>
-
 
 </resources>

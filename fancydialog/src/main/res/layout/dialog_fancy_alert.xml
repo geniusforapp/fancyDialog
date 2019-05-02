@@ -23,9 +23,10 @@
 
             <ImageView
                 android:id="@+id/imageIcon"
-                android:layout_width="@dimen/fancyDialogIconSize"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/fancyDialogIconSize"
                 android:layout_margin="@dimen/fancyDialogMargin"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toTopOf="@id/textTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
